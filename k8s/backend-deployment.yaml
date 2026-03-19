@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend-deployment
+spec:
+  replicas: 3 
+  selector:
+    matchLabels:
+      app: backend
+  template:
+    metadata:
+      labels:
+        app: backend
+    spec:
+      containers:
+      - name: backend-container
+        image: todobackend:latest 
+        imagePullPolicy: Never 
+        ports:
+        - containerPort: 8000
+        resources:
+          requests:
+            cpu: 100m 
+          limits:
+            cpu: 200m
